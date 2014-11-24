@@ -47,7 +47,7 @@ app.configure(function(){
   //Puede incluirse key: "somekey" . Y {reapInterval: 60000 * 10} dentro de MemoryStore()
   //MemoryStore no persiste la session. Si se quiere persistir es necesario usar Redis o Mongo
   app.use(express.session({secret: "secret key", store: new MemoryStore()}));
-  mongoose.connect('mongodb://localhost/nodebackbone');
+  mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone');
 });
 
 app.get('/', function (req, res) {
