@@ -20,7 +20,7 @@ var mongoose = require('mongoose');
 // {mail: require('./configmail.json'), mailto: require('./configToMail.json')};
 var config =  {mail: require('./configmail.json')};
 
-var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone'
+
 
 // Se importa el módulo Account.js. Este se define exportando tres argmentos (ver Account.js),
 // En este caso, con el objeto "config" se pasa una variable: mail.
@@ -35,6 +35,9 @@ app.configure(function(){
   /*Declaración de directorio padre para la descarga de ficheros estáticos
     __dirname - directorio del script ejecutándose en ese momento - es uno de 
     los varios objetos globales disponibes a todos los módulos dentro de Node*/
+  
+  var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone';
+
   app.use(express.static(__dirname + '/public')); 
   app.set('view engine', 'jade');
   app.set('view options', {layout: true });
