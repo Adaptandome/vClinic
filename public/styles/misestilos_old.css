@@ -1,0 +1,192 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+h1 {
+	font: bold 20px verdana, sans-serif;
+	color: #999999;
+}
+h2 {
+	font: bold 14px verdana, sans-serif;
+}
+p {
+	font-size: 20px;
+	text-align: justify;
+
+}
+
+header, section, footer, nav, article, figure, figcaption{
+	display: block;
+}
+body{
+	text-align: center;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+#caja_principal{
+	width: 100%;  /*Si se quiere ajustar al 100% del tamaño de la ventana*/
+	margin: 15px auto;
+	max-width: 1200px; /*Define el ancho total de todo el portal*/
+	text-align: left;
+}
+#seccion_principal{
+	float: left;
+	max-width: 800px;
+	margin: 15px auto;
+	background: #CCCCCC;
+}
+#seccion_principal2{
+	float: left;   /*Se cambia de float a left, para que esté alineado a la izquierda*/
+    max-width: 800px;	
+	margin: 15px auto;
+}
+#cabecera{
+	background: #219bd9;
+	border: 1px solid #999999;
+	padding: 20px;
+}
+.cabecera1{
+	background: #FFFFFF;
+	border: 1px solid #999999;
+	padding: 30px;
+}
+
+nav{
+	display: block;
+	padding: 5px 15px;
+	/*margin: 0 auto 20px;*/
+    /*border: 1px solid #222;*/
+    position: relative;
+    background: #CCCCCC;
+    font: 16px Tahoma; sans-serif;
+    /*display: inline-block;*/
+}
+nav ul{
+
+    font: 16px Tahoma; sans-serif;
+    /*float:left;/*Este float hace que se encuadre el menu al tamaño de los enlaces*/
+    text-align:left;
+    margin-right:10px;
+    /*font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    font-weight:bold;
+    text-shadow: 0px 1px 0px #FFF;*/
+
+}
+
+/*Configurado para que no se muestran las listas de submenus*/
+nav ul li ul{ 
+	display:none;
+    /*width:100%;*//*Se muestra todo el ancho de menu*/
+	position: absolute;
+	padding: 10px 15px;
+}
+
+/*Configurado para que la lista de elementos del menu principal se muestre en fila*/
+nav ul li{ 
+	display: inline-block;
+	/*list-style: none;*/
+	font: bold 16px verdana, sans-serif;
+}
+
+/*Configurado como se mostrará cada uno de los elementos del menu principal */
+nav ul li a {
+   display: block;
+   padding: 0px 10px;
+   /* margin-right:0px; Añadimos margen a la derecha, además del padding de 10 que tiene en horizontal por los dos lados */
+   /*margin-left:10px;*/
+   border: 1px solid #999999;
+   border-radius: 4px;
+   
+   background: #CCCCFF;
+   /*border-left: 1px solid #999;*/
+   /*background: #CCCCCC;*/
+   color: #000;
+   text-decoration: none;
+}
+
+/*Configurado para dar efecto al pasar por cada elemento del menu principal
+  También permite mantener el efecto en submenús*/
+nav ul li a:hover {
+   background-color: #FBE080; 
+}
+/*Configurado para dar efecto al pasar por un elemento con submenu. En realidad lo 
+que consigue es cambiar la propiedad:none del nav ul ul*/
+nav ul li:hover ul { 
+   display: block;
+}
+
+/*Configurado para mostrar el submenu en columna*/
+nav ul ul li{
+	float: none;
+	display: block;
+}
+
+/*Configurado para dar efecto al pasar por cada elemento del submenu */
+nav ul ul li a:hover {
+   background-color: #F0EB80; 
+}
+#submenu{
+
+}
+
+/*Auxiliares para añadirles efectos*/
+/*nav a span {
+  display: block;
+  float:right;
+  margin-left: 5px;
+}
+#menu ul:after{
+  content:".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}*/
+
+#pie_articulo p{
+	font: bold 14px verdana, sans-serif;
+}
+#barra_lateral{
+	float: right;
+	width: 220px;
+	margin: 20px 0px;
+	padding: 20px;
+	background: #CCCCCC;
+}
+
+#pie{
+	clear: both;
+	text-align: left;
+	color: #999999;
+	padding: 20px;
+	border-top: 2px solid #999999;
+}
+
+article {
+ 	background: #219bd9;
+ 	border: 1px solid #999999;
+ 	padding: 20px;
+ 	margin-bottom: 15px;
+}
+
+article footer {
+ 	text-align: right;
+}
+
+#contenedor_1{
+	width: auto;
+	margin: 20px 0px;
+	background: #219bd9;
+}
+#caja_1{
+	flex: 1 ;
+}
+#caja_2{
+	flex: 1 ;
+}
+#caja_3{
+	flex: 1 ;
+}

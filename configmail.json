@@ -1,0 +1,8 @@
+{
+  "service": "Gmail",
+  "auth": {
+      "user": "proj.japs@gmail.com",
+      "pass": "Proyect0"
+    }
+}
+

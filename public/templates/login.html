@@ -1,0 +1,47 @@
+<h1>login</h1>
+
+<form id="login">
+	<fieldset>
+		<legend> Credentials </legend>
+			<p class="error" id="error"> </p>
+
+   			<label> Eamil:
+				<input type="text" name="email" />
+			</label>
+
+			<br />
+
+			<label> Password:
+				<input type="password" name="password" />
+			</label>
+
+			<br />
+			<input type="submit" value="logarse ahora">
+			<!--
+			Por motivos desconocidos, no reconoce la API de FB como iniciada, y 
+			<div class="fb-login-button" data-max-rows="1" data-size="medium" data-auto-logout-link="false"></div>
+			-->
+
+	</fieldset>
+</form>
+
+<form id="facebook">
+	<p> facebook </p>
+	<input type="image" src='/templates/images/fb_login.jpg' onsubmit="submit_();">
+    <!--
+    Otra opción de botón
+	<button type="submit" name="fb_login" value="fb_login_btn_was_clicked">
+		Logarse desde <p> FB </p>
+  		<img src='/templates/images/fb_login.jpg' />
+	</button>
+    !-->
+	<br /> <br />
+	
+</form>
+
+<img id="organizer1" src='/templates/images/clinic.jpg' />
+<ul>
+	<li><a href="#forgotpassword"> Olvidó password?</a></li>
+	<li><a href="#registro"> Registrese </a></li>
+</ul>
+
