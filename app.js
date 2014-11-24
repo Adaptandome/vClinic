@@ -20,6 +20,8 @@ var mongoose = require('mongoose');
 // {mail: require('./configmail.json'), mailto: require('./configToMail.json')};
 var config =  {mail: require('./configmail.json')};
 
+var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone'
+
 // Se importa el módulo Account.js. Este se define exportando tres argmentos (ver Account.js),
 // En este caso, con el objeto "config" se pasa una variable: mail.
 var Account = require('./models/Account')(config, mongoose, nodemailer);
@@ -47,7 +49,14 @@ app.configure(function(){
   //Puede incluirse key: "somekey" . Y {reapInterval: 60000 * 10} dentro de MemoryStore()
   //MemoryStore no persiste la session. Si se quiere persistir es necesario usar Redis o Mongo
   app.use(express.session({secret: "secret key", store: new MemoryStore()}));
-  mongoose.connect( process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone');
+
+  mongoose.connect(mongoEnv, function (err, res) {
+    if (err) {
+    console.log ('ERROR connecting to: ' + mongoEnv + '. ' + err);
+    } else {
+    console.log ('Succeeded connected to: ' + mongoEnv);
+    }
+  });
 });
 
 app.get('/', function (req, res) {
