@@ -165,8 +165,8 @@ app.post('/resetPassword', function (req, res){
 });
 
 var port = process.env.PORT || 5000; /*En Heroku no se puede asignar un puerto fijo*/
+var mongoEnv = process.env.MONGOLAB_URI 
+
+mongoose.connect(mongoEnv);
 app.listen(port);
 console.log('listening on port ' + port);
-
-var mongoEnv = process.env.MONGOLAB_URI 
-mongoose.connect(mongoEnv);
