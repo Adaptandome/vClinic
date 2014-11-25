@@ -20,8 +20,6 @@ var mongoose = require('mongoose');
 // {mail: require('./configmail.json'), mailto: require('./configToMail.json')};
 var config =  {mail: require('./configmail.json')};
 
-
-
 // Se importa el módulo Account.js. Este se define exportando tres argmentos (ver Account.js),
 // En este caso, con el objeto "config" se pasa una variable: mail.
 var Account = require('./models/Account')(config, mongoose, nodemailer);
@@ -51,7 +49,7 @@ app.configure(function(){
   //MemoryStore no persiste la session. Si se quiere persistir es necesario usar Redis o Mongo
   app.use(express.session({secret: "secret key", store: new MemoryStore()}));
 
-  var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone';
+  /*var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone';
 
   mongoose.connect(mongoEnv, function (err, res) {
     if (err) {
@@ -59,7 +57,7 @@ app.configure(function(){
     } else {
     console.log ('Succeeded connected to: ' + mongoEnv);
     }
-  });
+  });*/
 });
 
 app.get('/', function (req, res) {
@@ -169,3 +167,6 @@ app.post('/resetPassword', function (req, res){
 var port = process.env.PORT || 5000; /*En Heroku no se puede asignar un puerto fijo*/
 app.listen(port);
 console.log('listening on port ' + port);
+
+var mongoEnv = process.env.MONGOLAB_URI 
+mongoose.connect(mongoEnv);
