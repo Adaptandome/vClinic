@@ -36,8 +36,6 @@ app.configure(function(){
     __dirname - directorio del script ejecutándose en ese momento - es uno de 
     los varios objetos globales disponibes a todos los módulos dentro de Node*/
   
-  var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone';
-
   app.use(express.static(__dirname + '/public')); 
   app.set('view engine', 'jade');
   app.set('view options', {layout: true });
@@ -52,6 +50,8 @@ app.configure(function(){
   //Puede incluirse key: "somekey" . Y {reapInterval: 60000 * 10} dentro de MemoryStore()
   //MemoryStore no persiste la session. Si se quiere persistir es necesario usar Redis o Mongo
   app.use(express.session({secret: "secret key", store: new MemoryStore()}));
+
+  var mongoEnv = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/nodebackbone';
 
   mongoose.connect(mongoEnv, function (err, res) {
     if (err) {
