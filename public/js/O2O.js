@@ -2,7 +2,7 @@
   la estructura de dependencias de la aplicación, llamada desde
   el bootstrapper de requirejs (boot.js) */
 
-define(['router','facebook'],
+define(['router','facebook', 'bootstrap'],
 	function(router,FB) {
 
 	//Función para inicializar y configurar el SDK de facebook. En este caso nos aseguramos
@@ -49,6 +49,7 @@ define(['router','facebook'],
 			window.location.hash = "login";
 		} else{
 			window.location.hash = "index";
+			//si se quiere otra ruta intentar: window.location = "./index ...";
 
 		}
 		//Comienza a monitorizar hashchange events y asignar rutas.

@@ -28,6 +28,7 @@ define(['text!templates/register.html'], function(registerTemplate){
 					nombre: $('input[name=nombre]').val(),
 					apellido: $('input[name=apellido]').val(),
 					email: $('input[name=email]').val(),
+					username: $('input[name=username]').val(),
 					password: $('input[name=password]').val()
 				},
 				success: function(data){

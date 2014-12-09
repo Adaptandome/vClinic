@@ -11,6 +11,7 @@ define(['views/index','views/registro','views/login', 'views/forgotpassword'],
 				"registro": "register",
 				"login": "login",
 				"forgotpassword": "forgotpassword"
+				
 				// ejemplo más completo--> "search/:query/p:page": "search"  //#search/kiwis/p7
 			},
 			//Función propia de router.js
@@ -47,6 +48,8 @@ define(['views/index','views/registro','views/login', 'views/forgotpassword'],
 			register: function() {
 				this.changeView(RegisterView);
 			},
+
+			
 
 		});
 		return new OrgRouter();

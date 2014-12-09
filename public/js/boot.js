@@ -1,7 +1,9 @@
 /*En algunos textos este fichero se referencia como main.js */
 require.config({
 	paths:{
+		opentok: '/js/libs/opentok.min',
 		facebook: '/js/libs/fb-sdk',
+		bootstrap: '/js/libs/bootstrap.min',
 		jQuery: '/js/libs/jquery-1.10.2.min',
 		Underscore: '/js/libs/underscore-min',
 		Backbone: '/js/libs/backbone-min',
@@ -15,7 +17,9 @@ require.config({
 
 	shim: {
 		'facebook' : {exports : "FB"},
-		'Backbone': ['Underscore','jQuery'],
+		// 'Backbone' : {"deps" :['Underscore','jQuery']}, underscore y jQuery se declaran dependientes de Backbone:
+		// cuando se vaya a cargar BAckbone, Reuirejs se asegura de que jQuery y underscore lo estén.
+		'Backbone': ['Underscore','jQuery'], 
 		'O2O': ['Backbone']
 		
 	}

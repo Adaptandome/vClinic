@@ -80,13 +80,21 @@ define(['text!templates/login.html'], function(loginTemplate){
 			$.ajax({
 				url: '/login',
 				type: 'POST',
-				data: {email: $('input[name=email]').val(),
+				data: {username: $('input[name=username]').val(),
 				password: $('input[name=password]').val()},
+				/* Si utilizasemos JSON:
+				contentType: "application/json",
+        		async: true,
+        		data: JSON.stringify({email: $('input[name=email]').val(), $('input[name=password]').val()}),
+        		Aunque una llamada ajax e asíncrona de por sí.
+				*/
 				success: function(data){
 					// Se indica a qué ventana se quiere llevar, en este caso a indice.
 					//El objeto location encapsula la URL de la página actual, y la propiedad hash 
 					//contiene el nombre dentro del enlace.
+					
 				  	window.location.hash = "index";
+				  	//window.location = "./vline/index"; --> Intentar si se puede redirigir a otra estructura
 				  },
 				error: function(){
 					$("#error").text('Unable to login.');
