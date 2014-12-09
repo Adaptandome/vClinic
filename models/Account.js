@@ -5,11 +5,16 @@ module.exports = function(config, mongoose, nodemailer) {
 	var AccountSchema = new mongoose.Schema({
 		email: {type: String, unique:true},
 		//id: {type: String},
+		username: {type: String},
 		password: {type: String},
 		name: {
 			first: {type: String},
 			last: {type: String}
 		},
+		/*
+		//Primero hay que actualizar la BD:
+		//db.nodebackbone.update({},{$set:{"gender":""},false,true}); o
+		//db.collections.update({},,{$set:{"gender":""},{upsert:true, multi:true})
 		birthday: {
 			day: {type: Number, min:1, max:31, required: false},
 			month: {type: Number, min:1, max:12, required: false},
@@ -17,12 +22,10 @@ module.exports = function(config, mongoose, nodemailer) {
 		},
 		photoUrl: {type: String},
 		gender: {type: String},
-		username: {type: String},
 		locale: {type: String},
 		link: {type: String}
+		*/
 	});
-
-	
 
 	var Account = mongoose.model('Account', AccountSchema);
 	
@@ -78,23 +81,24 @@ module.exports = function(config, mongoose, nodemailer) {
 		});
 	};
 
-    var login = function(email, password, callback) {
+    var login = function(username, password, callback) {
     	var shaSum = crypto.createHash('sha256');
     	shaSum.update(password);
-    	Account.findOne({email:email,password:shaSum.digest('hex')}, function(er,doc){
+    	Account.findOne({username:username,password:shaSum.digest('hex')}, function(er,doc){
     		/*Si no se encuentra una cuenta la variable doc será null, en cualquier caso
     		  se extrae de MongoDB*/
     		callback(null!=doc);
     	});
     };
 	
-	var registra = function(nombre, apellido, email, password) {
+	var registra = function(nombre, apellido, username, email, password) {
 		var shaSum = crypto.createHash('sha256');
 		shaSum.update(password);
 
 		console.log('Registering a ' + email);
 		var user = new Account({
 			email: email,
+			username: username,
 			name:{
 				first: nombre,
 				last: apellido
