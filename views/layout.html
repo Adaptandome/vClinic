@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title> {{title}} </title>
+ 
+  <link rel="stylesheet" href="/styles/fonts/bootstrap.css"> 
+  <link rel="stylesheet" href="/styles/misestilos.css">
+  <link rel="stylesheet" media="screen and (max-width: 1080px)" href="/styles/misestilos_old.css">
+
+
+  <script type="text/javascript" data-main="js/boot.js" src="js/libs/require-min.js"></script>
+  
+</head>
+<body>
+
+  <div id="main">
+    <header>
+        {% block title %}{% endblock %}
+        {% block header %}{% endblock %}
+    </header>
+
+    <nav id="menu2">
+      <!--<ul>
+        <li>Home</li>
+        <li>Login</li>
+        <li>Contacto</li>
+      </ul> -->
+    </nav>
+
+    <section id="seccion_principal"> 
+        {% block main %}{% endblock %}
+        <div id="content">
+          <div id="cvline">
+
+          </div>
+        </div>
+
+
+    </section>
+
+    <aside id="barra_lateral2">
+
+    </aside>
+
+    <footer id="pie">
+      Copyright ---
+    </footer> 
+    
+</div>
+  
+</body>
+</html>

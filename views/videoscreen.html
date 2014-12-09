@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<form id="videoscreen">
+<h1>Video Screen</h1>
+	<fieldset>
+		<legend> Pantalla de video </legend>
+
+	<!-- Una vez que se ha iniciado la API de vLine, sí se pueden utilizar las clases de esta -->
+		<br />
+		
+    <h1> Literal de h1</h1>
+
+	</fieldset>
+  <!--
+  <script>
+  var vlineClient = (function() {
+    if ('<%= serviceId %>' == 'YOUR_SERVICE_ID') {
+      alert('Please make sure you have created a vLine service and that you have properly set the serviceID and apiSecret variables on routes/routehandler.js file.');
+    }
+    var client, vlinesession,
+        authToken = '<%= jwt %>',
+        serviceId = '<%= serviceId %>',
+        profile = {"displayName": '<%= ses.user.name %>', "id": '<%= ses.user.id %>'};
+    // Create vLine client
+    window.vlineClient = client = vline.Client.create({"serviceId": serviceId, "ui": true});
+    // Add login event handler
+    client.on('login', onLogin);
+    // Do login
+    client.login(serviceId, profile, authToken);
+    function onLogin(event) {
+      vlinesession = event.target;
+      // Find and init call buttons and init them
+      $(".callbutton").each(function (index, element) {
+        initCallButton($(this));
+      });
+    }
+    // add event handlers for call button
+    function initCallButton(button) {
+      var userId = button.attr('data-userid');
+      // fetch person object associated with username
+      vlinesession.getPerson(userId).done(function (person) {
+        // update button state with presence
+        function onPresenceChange() {
+          if (person.getPresenceState() == 'online') {
+            button.removeClass().addClass('active');
+          } else {
+            button.removeClass();
+          }
+          button.attr('data-presence', person.getPresenceState());
+        }
+        // set current presence
+        onPresenceChange();
+        // handle presence changes
+        person.on('change', onPresenceChange);
+        // start a call when button is clicked
+        button.click(function () {
+          if (person.getId() == vlinesession.getLocalPersonId()) {
+            alert('You cannot call yourself. Login as another user in an incognito window');
+            return;
+          }
+          if (button.hasClass('active')) {
+            person.startMedia();
+          }
+        });
+      });
+    }
+    return client;
+  })();
+
+  $(window).unload(function () {
+    vlineClient.logout();
+  });
+</script>
+-->
+
+</form>
+{% endblock %}
