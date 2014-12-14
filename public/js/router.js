@@ -10,8 +10,7 @@ define(['views/index','views/registro','views/login', 'views/forgotpassword'],
 			routes: {"index": "index",
 				"registro": "register",
 				"login": "login",
-				"forgotpassword": "forgotpassword"
-				
+				"forgotpassword": "forgotpassword"				
 				// ejemplo más completo--> "search/:query/p:page": "search"  //#search/kiwis/p7
 			},
 			//Función propia de router.js

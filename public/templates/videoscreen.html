@@ -1,81 +1,50 @@
-<h2> Prueba de rendering a template </h2>
-<style type="text/css">
-    body {
-      padding-top: 60px;
-      padding-bottom: 40px;
-    }
-    .sidebar-nav {
-      padding: 9px 0;
-    }
-    @media (max-width: 980px) {
-      /* Enable use of floated navbar text */
-      .navbar-text.pull-right {
-        float: none;
-        padding-left: 5px;
-        padding-right: 5px;
-      }
-    }
-</style>
-
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-
-      <div class="nav-collapse collapse">
-
-        <p class="navbar-text pull-right">
-          Logged in as <%= usuario %>
-        </p>
-      </div> <!--/.nav-collapse -->
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <div class="well sidebar-nav">
-        <div style="padding:2%; width:96%">
-          <h4>Make Calls</h4>
-
-          <p>Click on any of the online users listed below in order to initiate a call.<br>
-            Users that are online are highlighted in blue.
-          </p>
-
-          <div id="myPublisherDiv"></div>
-
-        </div>
-      </div> <!--/.well -->
-      <div class="well sidebar-nav">
-        <ul class="nav nav-list">
-          <li class="nav-header">Registered Users</li>
-
-          <script> for(var i=0; i == 1; i++){ alert('El bucle funciona');  } </script> 
-
-        </ul>
-      </div> <!--/.well -->
-    </div> <!--/span-->
-  </div> <!--/row-->
-</div>
+  Logged in as <%= sessionId %>
+  </br>
+  <div id="contenido">ok</div>
+  <div id="contenido2">De subscribir sesión</div>
+  <ul class="nav nav-list">
+    <li class="nav-header" id="mensaje">Llamar a usuario registrado: </li>
+      <script> for(var i=0; i == 1; i++){ alert('El bucle funciona');  } </script>
+  </ul>
+  <div id="myPublisherDiv"></div>
+  </br>
+  <div id="mySubscriberDiv"></div>
+  </br>
+  <div id="subscriber"></div>
 
 
-      <script type="text/javascript">
+<script type="text/javascript">
+
       // Initialize API key, session, and token...
       // Think of a session as a room, and a token as the key to get in to the room
       // Sessions and tokens are generated on your server and passed down to the client
       var apiKey = "45101132";
-      var sessionId = "2_MX40NTEwMTEzMn5-MTQxNzc4ODA1MDU3NH52VkF6a0dyY1BtZFhrZlBiRDM4VVZUSEh-fg";
-      var token = "T1==cGFydG5lcl9pZD00NTEwMTEzMiZzaWc9OGU1ZjVhYzc0ODA1ZmE5N2ExOTM0MWU5MGE2YjdjYjNjYmJmYzcwZDpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTJfTVg0ME5URXdNVEV6TW41LU1UUXhOemM0T0RBMU1EVTNOSDUyVmtGNmEwZHlZMUJ0WkZoclpsQmlSRE00VlZaVVNFaC1mZyZjcmVhdGVfdGltZT0xNDE3Nzg4MTM4Jm5vbmNlPTAuNjIwMTk0MDMyOTgyOTY5Nw==";
+      var sessionId = "<%= sessionId %>"
+      var token = "<%= token %>"
+
 
       // Initialize session, set up event listeners, and connect
       var session = OT.initSession(apiKey, sessionId);
- 
-      session.on("streamCreated", function(event) {
-        session.subscribe(event.stream);
+
+      var publisher = OT.initPublisher("myPublisherDiv",{width:400, height:300});
+
+      publisher.on('streamCreated', function (event) {
+        $("#contenido").html('The publisher started streaming.');
+       
       });
-     
-      session.connect(token, function(error) {
-        var publisher = OT.initPublisher();
-        session.publish(publisher);
+          
+      session.connect(token, function (error) {
+        if (session.capabilities.publish == 1) {
+            session.publish(publisher);
+            $("#mensaje").html("Se puede conectar");
+            //setTimeout(function(){_this.initialized = true;}, 2000);
+        } else {
+           $("#contenido").html("You cannot publish an audio-video stream.");
+        }
+        if (error){ 
+            $("#mensaje").html("Hay error" + error.code + error.message);
+        }
       });
-    </script>
+
+
+</script>

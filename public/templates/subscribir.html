@@ -1,0 +1,60 @@
+  <div  id="error2"></div>
+  Logged in as 
+  <div id="contenido">content</div>
+  <div id="contenido2">Content2-</div>
+  <div id="contenido3">Content3-</div>
+  <div id="contenido4">Content4-</div>
+  <ul class="nav nav-list">
+    <li class="nav-header">Subscribir a streaming: </li>
+      <script> for(var i=0; i == 1; i++){ alert('El bucle funciona');  } </script> 
+  </ul>
+  </br>
+  <div class="mySubscriberDiv" id="mySubscriberDiv"></div>
+  </br>
+  <div class="myPublisherDiv" id="myPublisherDiv"></div>
+  </br>
+  <div  id="streamContainer"></div>
+  <div  id="subscriber"></div>
+
+
+
+    <script type="text/javascript">
+      // Initialize API key, session, and token...
+      // Think of a session as a room, and a token as the key to get in to the room
+      // Sessions and tokens are generated on your server and passed down to the client
+      var apiKey = "45101132";
+   
+      var sessionId = "<%= sessionId %>"
+      
+      var token = "<%= token %>"
+      // Initialize session, set up event listeners, and connect
+
+      var session = OT.initSession(apiKey, sessionId);
+
+      session.on(
+        {
+          streamCreated: function (event) {
+            $("#contenido").html("on A");
+            // the sessionConnectHandler() function is passed an event object of type SessionConnectEvent
+            session.subscribe(event.stream, "mySubscriberDiv", {width:400, height:300});
+          },
+          sessionConnected: function (sessionConnectEvent) {
+            $("#contenido2").html('on C');
+            
+          },
+          connectionCreated: function (event) {
+            $("#contenido3").html('on D');
+            //subscriber = session.subscribe(event.stream, "mySubscriberDiv", {width:400, height:300});
+          }
+        });
+
+      session.connect(token, function (error) {
+        if(error) {
+          $("#error2").html('Fallo al conectar:' + error);
+        }
+        if (session.capabilities.subscribe == 1) {
+            $("#contenido4").html('Permite subscribir');
+        } 
+      });
+
+    </script>

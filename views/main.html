@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+	
+{% block section %} 	
+	{{usuario}}
+	<section id="seccion_principal">
+		<h2> {{header}} </h2>
+		{% block content %}
+   	<div id="content">
+   	  <div id="cvline"> 
+      </div>
+    </div>
+   	{% endblock %}
+	</section>
+{% endblock %}
+
+{% block aside %}
+  <aside id="barra_lateral2"> </aside>
+{% endblock %}
+    
+{% block footer %}
+  <footer id="pie"> </footer>
+{% endblock %}

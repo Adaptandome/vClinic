@@ -8,7 +8,8 @@
     "nodemailer":">=0.3.20",
     "connect":">=1.9.1",
     "consolidate":">=0.10.0",
-    "swig":">=1.4.2"
+    "swig":">=1.4.2",
+    "opentok":">=2.2.4"
   },
   "engines": {
     "node": "0.10.x",

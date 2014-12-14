@@ -5,20 +5,41 @@ cadenas de HTML en el mismo javascript
 En este caso el módulo (index.html)  tiene dependencias (vline), por lo que a los módulos se les asocia 
 una función que será llamada una vez se hayan cargado todas las dependencias*/
 
-define(['text!templates/index.html', 'opentok','text!templates/videoscreen.html'], function(indexTemplate, opentok, videoscreenTemplate){
+define(['text!templates/index.html', 'opentok','text!templates/videoscreen.html', 'text!templates/subscribir.html'], function(indexTemplate, opentok, videoscreenTemplate, subscribirTemplate){
 
 
 	var indexView = Backbone.View.extend({
 		el: $('#content'),
 		events: {
 			'submit #index': 'index',
-			'click .nav-header ':'screen'
+			'click #btn_subscribir ':'subscribir'
 		},
 
-		screen: function(){
+		subscribir: function(){
 
-			$("#error").text('Click nav-header' );
-			$("#error").slideDown();
+			$("#error").slideUp();
+
+    		$.ajax({
+    			url: '/subscribir',
+    			type:'GET',
+    			datatype: 'json',
+    			success: function(data){
+					
+					//$("#cvline").html('<p> jwt: ' + data.ses + '</p>');
+					$("#cvline").html(_.template(subscribirTemplate)({sessionId : data.sessionId, token : data.token}));
+					$("#cvline").slideDown();
+					$("#btn_publicar").html("");
+					$("#btn_subscribir").html("");
+
+
+    			},
+				error: function(){
+					$("#error").text('No se pudo establecer conexión.');
+					$("#error").slideDown();
+				}
+
+    		})
+    		return false;
 		},
 
 		index: function() {
@@ -32,12 +53,15 @@ define(['text!templates/index.html', 'opentok','text!templates/videoscreen.html'
     			success: function(data){
 					
 					//$("#cvline").html('<p> jwt: ' + data.ses + '</p>');
-					$("#cvline").html(_.template(videoscreenTemplate)({usuario : data.ses}));
+					$("#cvline").html(_.template(videoscreenTemplate)({sessionId : data.sessionId, token : data.token}));
 					$("#cvline").slideDown();
+					$("#btn_publicar").html("");
+					//$("#btn_subscribir").html("");
+
 
     			},
 				error: function(){
-					$("#error").text('No se puedo establecer conexión.');
+					$("#error").text('No se pudo establecer conexión.');
 					$("#error").slideDown();
 				}
 

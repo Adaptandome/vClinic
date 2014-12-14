@@ -2,18 +2,18 @@
 serializar a texto el contenido html del fichero conection.html. 
 */
 
-define(['text!templates/videoscreen.html'], function(videoscreenTemplate){
+define(['text!templates/subscribir.html'], function(subscribirTemplate){
 
 
-	var videoscreenView = Backbone.View.extend({
+	var subscribirView = Backbone.View.extend({
 		el: $('#content'),
     
 		render: function() {
 			
-			this.$el.html(videoscreenTemplate);
+			this.$el.html(subscribirTemplate);
 		}
 	});
     
 	// La función devuelve un objeto que define el módulo
-	return new videoscreenView;
+	return new subscribirView;
 });
