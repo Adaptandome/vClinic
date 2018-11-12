@@ -1,5 +1,5 @@
 {
-  "name": "vclinic",
+  "name": "roofuse",
   "version": "0.0.1",
   "dependencies": {
     "express": "3.1.x",
@@ -15,7 +15,7 @@
     "node": "0.10.x",
     "npm": "1.2.x"
   },
-  "description": "Real time video chat for medical consultancy",
+  "description": "Marketplace for the new city land",
   "main": "app.js",
   "devDependencies": {},
   "scripts": {
@@ -23,12 +23,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Adaptandome/vClinic.git"
+    "url": "https://github.com/Adaptandome/roofuse.git"
   },
   "keywords": [
-    "Video",
-    "Consultancy",
-    "Medical"
+    "City",
+    "Clean",
+    "Green",
+    "Sharing",
+    "Radio",
+    "Rooftop"
   ],
 
   "author": "Alberto Perez",
